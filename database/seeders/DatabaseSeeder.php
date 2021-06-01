@@ -2,6 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Categoria;
+use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +16,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        User::factory(10)->create();
+        $this->call([
+            CategoriaSeeder::class,
+            RegistroSeeder::class,
+        ]
+        );
     }
 }
